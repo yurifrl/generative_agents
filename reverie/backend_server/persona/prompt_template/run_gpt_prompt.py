@@ -333,9 +333,9 @@ def run_gpt_prompt_task_decomp(persona,
         for i in range(index): 
           start_min += persona.scratch.f_daily_schedule_hourly_org[i][1]
         end_min = start_min + persona.scratch.f_daily_schedule_hourly_org[index][1]
-        start_time = (datetime.datetime.strptime("00:00:00", "%H:%M:%S") 
+        start_time = (datetime.datetime.strptime("14:00:00", "%H:%M:%S") 
                       + datetime.timedelta(minutes=start_min)) 
-        end_time = (datetime.datetime.strptime("00:00:00", "%H:%M:%S") 
+        end_time = (datetime.datetime.strptime("14:00:00", "%H:%M:%S") 
                       + datetime.timedelta(minutes=end_min)) 
         start_time_str = start_time.strftime("%H:%M%p")
         end_time_str = end_time.strftime("%H:%M%p")

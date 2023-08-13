@@ -22,7 +22,7 @@ def landing(request):
   template = "landing/landing.html"
   return render(request, template, context)
 
-
+#ANCHOR - Check this
 def demo(request, sim_code, step, play_speed="2"): 
   move_file = f"compressed_storage/{sim_code}/master_movement.json"
   meta_file = f"compressed_storage/{sim_code}/meta.json"
@@ -38,7 +38,7 @@ def demo(request, sim_code, step, play_speed="2"):
     meta = json.load(json_file)
 
   sec_per_step = meta["sec_per_step"]
-  start_datetime = datetime.datetime.strptime(meta["start_date"] + " 00:00:00", 
+  start_datetime = datetime.datetime.strptime(meta["start_date"] + " 14:00:00", 
                                               '%B %d, %Y %H:%M:%S')
   for i in range(step): 
     start_datetime += datetime.timedelta(seconds=sec_per_step)
@@ -71,6 +71,9 @@ def demo(request, sim_code, step, play_speed="2"):
   init_prep = dict() 
   for int_key in range(step+1): 
     key = str(int_key)
+    print("ok", key)
+    print(raw_all_movement[key])
+    print("ono")
     val = raw_all_movement[key]
     for p in persona_names_set: 
       if p in val: 
@@ -276,9 +279,9 @@ def update_environment(request):
   RETURNS: 
     HttpResponse
   """
-  # f_curr_sim_code = "temp_storage/curr_sim_code.json"
-  # with open(f_curr_sim_code) as json_file:  
-  #   sim_code = json.load(json_file)["sim_code"]
+  f_curr_sim_code = "temp_storage/curr_sim_code.json"
+  with open(f_curr_sim_code) as json_file:  
+    sim_code = json.load(json_file)["sim_code"]
 
   data = json.loads(request.body)
   step = data["step"]
