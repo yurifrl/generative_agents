@@ -38,8 +38,8 @@ def demo(request, sim_code, step, play_speed="2"):
     meta = json.load(json_file)
 
   sec_per_step = meta["sec_per_step"]
-  start_datetime = datetime.datetime.strptime(meta["start_date"] + " 14:00:00", 
-                                              '%B %d, %Y %H:%M:%S')
+  #!SECTION: not sure why this was start_time + 00:00:00 and curr_time not used
+  start_datetime = datetime.datetime.strptime(meta["curr_time"], '%B %d, %Y %H:%M:%S')
   for i in range(step): 
     start_datetime += datetime.timedelta(seconds=sec_per_step)
   start_datetime = start_datetime.strftime("%Y-%m-%dT%H:%M:%S")
